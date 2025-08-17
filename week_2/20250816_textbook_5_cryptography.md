@@ -5,99 +5,6 @@ Model: qwen3:30b
 Output Mode: Comprehensive
 -->
 
-<think>
-I'll create a comprehensive set of study notes based on this cryptography textbook excerpt. I need to extract all concepts, provide detailed explanations, define terms with context, include examples, and organize everything hierarchically.
-
-Let me break down the key sections from the text:
-
-1. **Symmetric Cryptography** (block ciphers, stream ciphers, hash functions)
-2. **Asymmetric Cryptography** (RSA, Diffie-Hellman, elliptic curves)
-3. **Key Management & Protocols**
-4. **TLS Protocol**
-5. **Implementation Issues**
-
-I'll organize my notes accordingly with hierarchical headers, bold key terms, and include all important concepts.
-
-Let me start by identifying the main topics:
-
-1. Symmetric Cryptography:
-   - Block ciphers (AES)
-   - Stream ciphers
-   - Hash functions
-
-2. Asymmetric Cryptography:
-   - RSA encryption/signature
-   - Diffie-Hellman key exchange
-   - Digital Signature Algorithm (DSA)
-   - Elliptic Curve Cryptography (ECC)
-
-3. Key Management & Protocols:
-   - Certificates and Certification Authorities (CAs)
-   - TLS/SSL protocol
-
-4. Implementation Issues:
-   - Side-channel attacks
-   - Poor random number generation
-   - Weak implementations of protocols
-
-5. Quantum Computing Threats
-
-Now I'll create detailed notes for each section, including all concepts, definitions, examples, formulas, and important details from the text.
-
-Let me start with Symmetric Cryptography:
-
-### Block Ciphers:
-- AES (Advanced Encryption Standard)
-- Construction through careful combination of substitutions and permutations
-- Modes of operation: ECB, CBC, etc.
-- Security properties
-
-### Stream Ciphers:
-- Constructed from block ciphers in suitable modes
-- Different error propagation characteristics
-
-### Hash Functions:
-- One-way functions with specific security properties
-- HMAC (Hash-based Message Authentication Code)
-- Merkle trees for hashing large data structures
-
-For Asymmetric Cryptography:
-
-### RSA:
-- Based on factoring problem
-- Public exponent e, private key d = inverse of e mod φ(N)
-- Encryption: C ≡ M^e mod N
-- Decryption: M ≡ C^d mod N
-- OAEP (Optimal Asymmetric Encryption Padding)
-
-### Diffie-Hellman:
-- Key exchange protocol based on discrete logarithm problem
-- Forward security properties
-
-### Digital Signature Algorithm (DSA):
-- Based on discrete logarithms
-- ECDSA as elliptic curve variant
-
-### Elliptic Curve Cryptography:
-- Uses discrete logarithms on elliptic curves
-- More efficient than traditional RSA/DH for equivalent security levels
-
-For Key Management & Protocols:
-
-### Certificates and CAs:
-- Certificate structure (public key binding)
-- Challenges in naming, authorization vs authentication
-- Revocation issues
-
-### TLS Protocol:
-- Handshake process
-- Security features of different versions
-- Attacks on previous versions
-
-Now I'll create detailed notes for each section with all the important information from the text.
-
-I need to be comprehensive and include every concept mentioned. Let me start drafting my study guide.
-</think>
 
 # Comprehensive Cryptography Study Guide
 
@@ -144,11 +51,9 @@ Hash functions take an input message and return a fixed-size output called a has
 
 ### 1.4 HMAC - Keyed Hashing
 HMAC is an algorithm for message authentication using hash functions with keys:
-
 ```
 HMAC_k(M) = h(k ⊕ B, h(k ⊕ A, M))
 ```
-
 Where:
 - `A` and `B` are constants (0x36 and 0x5C repeated)
 - `h` is the underlying hash function
@@ -160,11 +65,9 @@ Where:
 
 ### 1.5 Merkle Trees for Large Data Structures
 Merkle trees are used to efficiently verify large data structures by hashing multiple inputs into a single root hash:
-
 ```
 Root = H(H(left_child) || H(right_child))
 ```
-
 **Structure:**
 - Leaves contain hashes of individual data blocks
 - Each non-leaf node contains the hash of its child nodes' hashes
@@ -195,25 +98,21 @@ For RSA:
 C ≡ M^e mod N   [Encryption]
 M ≡ C^d mod N    [Decryption]
 ```
-
 > "Neither RSA encryption nor signature is safe to use on its own. The reason is that, as encryption is an algebraic process, it preserves certain algebraic properties."
 
 ### 2.2 OAEP (Optimal Asymmetric Encryption Padding)
 OAEP adds randomness and redundancy to prevent attacks:
-
 ```
 C1 = M ⊕ h(N)
 C2 = N ⊕ h(C1)
 Result: C = RSA_encrypt(C1 || C2)
 ```
-
 **Purpose:** Prevents chosen-ciphertext attacks, low-exponent attacks, and homomorphism-based attacks.
 
 > "This was eventually proven to be secure. There are a number of public-key cryptography standards; PKCS #1 describes OAEP."
 
 ### 2.3 Diffie-Hellman Key Exchange
 A protocol for establishing shared secrets over an insecure channel:
-
 ```
 Alice: Choose random x_A, compute y_A = g^x_A mod p
 Bob:   Choose random x_B, compute y_B = g^x_B mod p
@@ -222,7 +121,6 @@ Shared secret:
   Alice computes K = (g^x_B)^x_A mod p = g^(x_A*x_B) mod p
   Bob computes K = (g^x_A)^x_B mod p = g^(x_A*x_B) mod p
 ```
-
 **Forward Security:**
 - If transient keys are used, an attacker who compromises past private keys cannot decrypt future communications.
 - "Even if an opponent had inspected both their machines before this protocol was started... the opponent could still not eavesdrop on their traffic."
@@ -243,7 +141,6 @@ r ≡ (g^k mod p) mod q   [Random k]
 s ≡ (h(M) - xr)/k mod q  [Hash h(M)]
 Sig_x(M) = (r, s)
 ```
-
 ### 2.5 Elliptic Curve Cryptography (ECC)
 
 **Mathematical Foundation:**
@@ -267,12 +164,10 @@ Sig_x(M) = (r, s)
 
 ### 2.6 Identity-Based Cryptography
 A system where public keys are derived from identities (e.g., email addresses):
-
 ```
 Public Key = ID (e.g., "alice@example.com")
 Private Key = f(ID, master_secret)
 ```
-
 **How it Works:**
 - User chooses identity.
 - Central authority issues private key corresponding to that identity using its own secret key.
@@ -290,7 +185,6 @@ S → C: ServerHello {name, nonce, certificate with public key}
 C → S: Encrypted pre-master-secret + Finished message
 S → C: Finished message + Data encrypted under master secret
 ```
-
 **Key Components:**
 - **Pre-Master Secret**: Random value exchanged using RSA or Diffie-Hellman.
 - **Master Secret**: Derived from pre-master secret and nonces (K1 = h(K0, NC, NS)).
@@ -343,11 +237,9 @@ Pretty Good Privacy: Open-source encryption for email:
 **Forward Security:**
 - If a key is compromised in session i+1, past sessions (i) remain secure.
 - Achieved by updating keys using hash functions or message exchanges.
-
 ```
 K_{i+1} = h(K_i, M_i)
 ```
-
 > "If an attacker now compromises one of their systems and steals the key, then as soon as they exchange a message which he can't observe or guess, security will be recovered."
 
 **Backward Security:**
@@ -361,7 +253,6 @@ K_{i+1} = h(K_i, M_i)
 ```
 C_A = Sig_KS(TS, L, A, K_A, V_A)
 ```
-
 Where:
 - TS = certificate start time/date
 - L = validity period length
