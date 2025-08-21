@@ -15,20 +15,17 @@ Content Type: Mixed
 
 ## 📚 Table of Contents
 
-1. [Week 2: Lecture 2 - Secure Programming: Threat Modeling & Input Sanitization](#week-2-lecture-2---secure-programming-threat-modeling-&-input-sanitization)
+1. [Week 2: Lecture 2 - Secure Programming: Threat Modeling and Input Sanitization](#week-2-lecture-2---secure-programming-threat-modeling-and-input-sanitization)
 2. [Chapter 27: Secure Systems Development - Comprehensive Study Notes](#chapter-27-secure-systems-development---comprehensive-study-notes)
 3. [Comprehensive Cryptography Study Guide](#comprehensive-cryptography-study-guide)
 4. [Comprehensive Study Notes: Chapter 6 - Access Control](#comprehensive-study-notes-chapter-6---access-control)
 5. [Comprehensive Study Notes: Secure Programming Tutorial 1](#comprehensive-study-notes-secure-programming-tutorial-1)
-6. [Comprehensive Study Notes: Module 2 – Input Sanitising & Authorisation](#comprehensive-study-notes-module-2-–-input-sanitising-&-authorisation)
+6. [Comprehensive Study Notes: Module 2 - Input Sanitising and Authorisation](#comprehensive-study-notes-module-2---input-sanitising-and-authorisation)
 
 
 ---
 
-# Week 2: Lecture 2 - Secure Programming: Threat Modeling & Input Sanitization
-
-
-# Week 2: Lecture 2 - Secure Programming: Threat Modeling & Input Sanitization
+# Week 2: Lecture 2 - Secure Programming: Threat Modeling and Input Sanitization
 
 ### Overview
 This lecture introduces two critical security concepts for secure software development:
@@ -2017,7 +2014,7 @@ Designing a secure communication protocol demands addressing these critical area
 
 ---
 
-# Comprehensive Study Notes: Module 2 – Input Sanitising & Authorisation
+# Comprehensive Study Notes: Module 2 - Input Sanitising and Authorisation
 
 
 *Based on Week 2 Textbook Chapter (Ross Anderson Chapters 5, 6, 27.4–27.5)*  

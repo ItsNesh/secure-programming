@@ -17,10 +17,10 @@ Content Type: Mixed
 
 1. [Comprehensive Study Notes: Attack Trees](#comprehensive-study-notes-attack-trees)
 2. [Week 1: Lecture 1 - Introduction to Secure Programming](#week-1-lecture-1---introduction-to-secure-programming)
-3. [Comprehensive Study Notes: Safety-Critical Systems (Chapter 27)](#comprehensive-study-notes-safety-critical-systems-(chapter-27))
-4. [Comprehensive Study Notes: Chapter 2 - Who Is the Opponent?](#comprehensive-study-notes-chapter-2---who-is-the-opponent?)
-5. [Comprehensive Study Notes: Passwords (Chapter 3)](#comprehensive-study-notes-passwords-(chapter-3))
-6. [Comprehensive Study Notes: Week 1 – *The Key To Capability Alignment*](#comprehensive-study-notes-week-1-–-*the-key-to-capability-alignment*)
+3. [Comprehensive Study Notes: Safety-Critical Systems (Chapter 27)](#comprehensive-study-notes-safety-critical-systems-chapter-27)
+4. [Comprehensive Study Notes: Chapter 2 - Who Is the Opponent?](#comprehensive-study-notes-chapter-2---who-is-the-opponent)
+5. [Comprehensive Study Notes: Passwords (Chapter 3)](#comprehensive-study-notes-passwords-chapter-3)
+6. [Comprehensive Study Notes: Week 1 - The Key to Capability Alignment](#comprehensive-study-notes-week-1---the-key-to-capability-alignment)
 
 
 ---
@@ -1526,7 +1526,7 @@ Where:
 
 ---
 
-# Comprehensive Study Notes: Week 1 – *The Key To Capability Alignment*
+# Comprehensive Study Notes: Week 1 - The Key to Capability Alignment
 
 
 
