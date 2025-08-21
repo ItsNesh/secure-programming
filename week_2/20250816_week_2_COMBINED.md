@@ -15,17 +15,17 @@ Content Type: Mixed
 
 ## 📚 Table of Contents
 
-1. [Week 2: Lecture 2 - Secure Programming: Threat Modeling & Input Sanitization](#week-2-lecture-2---secure-programming-threat-modeling-&-input-sanitization)
+1. [Week 2: Lecture 2 - Secure Programming: Threat Modeling and Input Sanitization](#week-2-lecture-2---secure-programming-threat-modeling-and-input-sanitization)
 2. [Chapter 27: Secure Systems Development - Comprehensive Study Notes](#chapter-27-secure-systems-development---comprehensive-study-notes)
 3. [Comprehensive Cryptography Study Guide](#comprehensive-cryptography-study-guide)
 4. [Comprehensive Study Notes: Chapter 6 - Access Control](#comprehensive-study-notes-chapter-6---access-control)
 5. [Comprehensive Study Notes: Secure Programming Tutorial 1](#comprehensive-study-notes-secure-programming-tutorial-1)
-6. [Comprehensive Study Notes: Module 2 – Input Sanitising & Authorisation](#comprehensive-study-notes-module-2-–-input-sanitising-&-authorisation)
+6. [Comprehensive Study Notes: Module 2 - Input Sanitising and Authorisation](#comprehensive-study-notes-module-2---input-sanitising-and-authorisation)
 
 
 ---
 
-# Week 2: Lecture 2 - Secure Programming: Threat Modeling & Input Sanitization
+# Week 2: Lecture 2 - Secure Programming: Threat Modeling and Input Sanitization
 
 ### Overview
 This lecture introduces two critical security concepts for secure software development:
@@ -168,7 +168,6 @@ Open Safe
     ├── Requires special equipment (expensive)
     └── Needs physical strength (high effort)
 ```
-
 *Instructor Emphasis*: "Attack trees help you think like an attacker to identify all possible paths they might take."
 
 ---
@@ -293,7 +292,6 @@ Client (Browser) → Server (Web App) → Database
           |               |
         GET/POST Requests   Queries
 ```
-
 **Request Types**:
 - **GET**: For requesting resources (e.g., `?id=5`)
 - **POST**: For form submissions and sensitive data
@@ -315,7 +313,6 @@ $t = $_REQUEST['ip'];
 $o = shell_exec('ping -C 3 ' . $t);
 echo $o;
 ```
-
 **Attack Vector**: `127.0.0.1; ls`  
 *(Semicolon separates commands, so it executes both ping and list files)*
 
@@ -323,7 +320,6 @@ echo $o;
 ```bash
 ping -C 3 127.0.0.1; ls
 ```
-
 **Exploit Impact**: Attacker can execute arbitrary system commands.
 
 > *Instructor Insight*: "This is why you should never trust user input directly in command execution."
@@ -336,7 +332,6 @@ $id = $_GET['id'];
 $getid = "SELECT first_name, last_name FROM users WHERE user_id = $id";
 $result = mysql_query($getid) or die(mysql_error());
 ```
-
 **Attack Vector**: `1 OR 1=1;#`  
 *(The semicolon ends the query, and # comments out the rest)*
 
@@ -344,7 +339,6 @@ $result = mysql_query($getid) or die(mysql_error());
 ```sql
 SELECT first_name, last_name FROM users WHERE user_id = 1 OR 1=1;
 ```
-
 **Impact**: Returns all user data (not just one user).
 
 ##### Why Quotes Don't Fully Fix It:
@@ -358,7 +352,6 @@ Attack Vector: `1' OR '1'='1';#`
 ```sql
 SELECT ... FROM users WHERE user_id = '1' OR '1'='1';#
 ```
-
 > *Instructor Insight*: "This is why prepared statements (separating query from data) are essential."
 
 ---
@@ -494,7 +487,6 @@ $id = $_GET['id'];
 $query = "SELECT * FROM products WHERE id = $id";
 $result = mysql_query($query);
 ```
-
 #### Exercise 3: XSS Defense
 How would you prevent reflected XSS in a search feature?
 - Current implementation: `<input type="text" name="search">`
@@ -505,42 +497,6 @@ How would you prevent reflected XSS in a search feature?
 
 # Chapter 27: Secure Systems Development - Comprehensive Study Notes
 
-<think>
-I need to create comprehensive study notes based on textbook chapters 27.4 and 27.5 from the provided slides.
-
-Let me break down what I'll cover:
-
-1. **Chapter 27.4: Prioritising protection goals**
-   - Risk vs reward tradeoffs in business systems
-   - Examples of fraud management strategies (retailers)
-   - Site reliability engineering principles
-   - Discussion on CVEs and security priorities
-
-2. **Chapter 27.5: Methodology**
-   - Software crisis history
-   - Waterfall model explanation
-   - Spiral model vs Agile development
-   - Secure Development Lifecycle (SDL) at Microsoft
-   - Gated development approach for security
-   - Software as a Service (SaaS)
-   - DevOps and DevSecOps concepts
-   - Vulnerability lifecycle management
-
-I'll create detailed notes covering all these topics with explanations, examples, definitions of key terms, etc.
-
-Let me organize this into comprehensive study notes following the instructions:
-
-- Hierarchical headers for organization
-- Bold key terms/concepts
-- Tables where appropriate (for comparisons)
-- Include formulas/processes when relevant
-- Comprehensive summary sections
-- 15-20 study questions
-
-I'll make sure to extract ALL concepts, theories, and principles from these slides.
-
-Let me begin creating the notes.
-</think>
 
 
 ### 27.4 Prioritising Protection Goals
@@ -743,7 +699,6 @@ B -->|Public Disclosure| E[Attack in Wild]
 E --> F[Patch Released]
 F --> G[Customers Apply Patches]
 ```
-
 ##### Stakeholder Interests
 | Stakeholder | Interest |
 |-------------|----------|
@@ -937,99 +892,6 @@ F --> G[Customers Apply Patches]
 
 # Comprehensive Cryptography Study Guide
 
-<think>
-I'll create a comprehensive set of study notes based on this cryptography textbook excerpt. I need to extract all concepts, provide detailed explanations, define terms with context, include examples, and organize everything hierarchically.
-
-Let me break down the key sections from the text:
-
-1. **Symmetric Cryptography** (block ciphers, stream ciphers, hash functions)
-2. **Asymmetric Cryptography** (RSA, Diffie-Hellman, elliptic curves)
-3. **Key Management & Protocols**
-4. **TLS Protocol**
-5. **Implementation Issues**
-
-I'll organize my notes accordingly with hierarchical headers, bold key terms, and include all important concepts.
-
-Let me start by identifying the main topics:
-
-1. Symmetric Cryptography:
-   - Block ciphers (AES)
-   - Stream ciphers
-   - Hash functions
-
-2. Asymmetric Cryptography:
-   - RSA encryption/signature
-   - Diffie-Hellman key exchange
-   - Digital Signature Algorithm (DSA)
-   - Elliptic Curve Cryptography (ECC)
-
-3. Key Management & Protocols:
-   - Certificates and Certification Authorities (CAs)
-   - TLS/SSL protocol
-
-4. Implementation Issues:
-   - Side-channel attacks
-   - Poor random number generation
-   - Weak implementations of protocols
-
-5. Quantum Computing Threats
-
-Now I'll create detailed notes for each section, including all concepts, definitions, examples, formulas, and important details from the text.
-
-Let me start with Symmetric Cryptography:
-
-#### Block Ciphers:
-- AES (Advanced Encryption Standard)
-- Construction through careful combination of substitutions and permutations
-- Modes of operation: ECB, CBC, etc.
-- Security properties
-
-#### Stream Ciphers:
-- Constructed from block ciphers in suitable modes
-- Different error propagation characteristics
-
-#### Hash Functions:
-- One-way functions with specific security properties
-- HMAC (Hash-based Message Authentication Code)
-- Merkle trees for hashing large data structures
-
-For Asymmetric Cryptography:
-
-#### RSA:
-- Based on factoring problem
-- Public exponent e, private key d = inverse of e mod φ(N)
-- Encryption: C ≡ M^e mod N
-- Decryption: M ≡ C^d mod N
-- OAEP (Optimal Asymmetric Encryption Padding)
-
-#### Diffie-Hellman:
-- Key exchange protocol based on discrete logarithm problem
-- Forward security properties
-
-#### Digital Signature Algorithm (DSA):
-- Based on discrete logarithms
-- ECDSA as elliptic curve variant
-
-#### Elliptic Curve Cryptography:
-- Uses discrete logarithms on elliptic curves
-- More efficient than traditional RSA/DH for equivalent security levels
-
-For Key Management & Protocols:
-
-#### Certificates and CAs:
-- Certificate structure (public key binding)
-- Challenges in naming, authorization vs authentication
-- Revocation issues
-
-#### TLS Protocol:
-- Handshake process
-- Security features of different versions
-- Attacks on previous versions
-
-Now I'll create detailed notes for each section with all the important information from the text.
-
-I need to be comprehensive and include every concept mentioned. Let me start drafting my study guide.
-</think>
 
 
 ### 1. Symmetric Cryptography Fundamentals
@@ -1075,11 +937,9 @@ Hash functions take an input message and return a fixed-size output called a has
 
 #### 1.4 HMAC - Keyed Hashing
 HMAC is an algorithm for message authentication using hash functions with keys:
-
 ```
 HMAC_k(M) = h(k ⊕ B, h(k ⊕ A, M))
 ```
-
 Where:
 - `A` and `B` are constants (0x36 and 0x5C repeated)
 - `h` is the underlying hash function
@@ -1091,11 +951,9 @@ Where:
 
 #### 1.5 Merkle Trees for Large Data Structures
 Merkle trees are used to efficiently verify large data structures by hashing multiple inputs into a single root hash:
-
 ```
 Root = H(H(left_child) || H(right_child))
 ```
-
 **Structure:**
 - Leaves contain hashes of individual data blocks
 - Each non-leaf node contains the hash of its child nodes' hashes
@@ -1126,25 +984,21 @@ For RSA:
 C ≡ M^e mod N   [Encryption]
 M ≡ C^d mod N    [Decryption]
 ```
-
 > "Neither RSA encryption nor signature is safe to use on its own. The reason is that, as encryption is an algebraic process, it preserves certain algebraic properties."
 
 #### 2.2 OAEP (Optimal Asymmetric Encryption Padding)
 OAEP adds randomness and redundancy to prevent attacks:
-
 ```
 C1 = M ⊕ h(N)
 C2 = N ⊕ h(C1)
 Result: C = RSA_encrypt(C1 || C2)
 ```
-
 **Purpose:** Prevents chosen-ciphertext attacks, low-exponent attacks, and homomorphism-based attacks.
 
 > "This was eventually proven to be secure. There are a number of public-key cryptography standards; PKCS #1 describes OAEP."
 
 #### 2.3 Diffie-Hellman Key Exchange
 A protocol for establishing shared secrets over an insecure channel:
-
 ```
 Alice: Choose random x_A, compute y_A = g^x_A mod p
 Bob:   Choose random x_B, compute y_B = g^x_B mod p
@@ -1153,7 +1007,6 @@ Shared secret:
   Alice computes K = (g^x_B)^x_A mod p = g^(x_A*x_B) mod p
   Bob computes K = (g^x_A)^x_B mod p = g^(x_A*x_B) mod p
 ```
-
 **Forward Security:**
 - If transient keys are used, an attacker who compromises past private keys cannot decrypt future communications.
 - "Even if an opponent had inspected both their machines before this protocol was started... the opponent could still not eavesdrop on their traffic."
@@ -1174,7 +1027,6 @@ r ≡ (g^k mod p) mod q   [Random k]
 s ≡ (h(M) - xr)/k mod q  [Hash h(M)]
 Sig_x(M) = (r, s)
 ```
-
 #### 2.5 Elliptic Curve Cryptography (ECC)
 
 **Mathematical Foundation:**
@@ -1198,12 +1050,10 @@ Sig_x(M) = (r, s)
 
 #### 2.6 Identity-Based Cryptography
 A system where public keys are derived from identities (e.g., email addresses):
-
 ```
 Public Key = ID (e.g., "alice@example.com")
 Private Key = f(ID, master_secret)
 ```
-
 **How it Works:**
 - User chooses identity.
 - Central authority issues private key corresponding to that identity using its own secret key.
@@ -1221,7 +1071,6 @@ S → C: ServerHello {name, nonce, certificate with public key}
 C → S: Encrypted pre-master-secret + Finished message
 S → C: Finished message + Data encrypted under master secret
 ```
-
 **Key Components:**
 - **Pre-Master Secret**: Random value exchanged using RSA or Diffie-Hellman.
 - **Master Secret**: Derived from pre-master secret and nonces (K1 = h(K0, NC, NS)).
@@ -1274,11 +1123,9 @@ Pretty Good Privacy: Open-source encryption for email:
 **Forward Security:**
 - If a key is compromised in session i+1, past sessions (i) remain secure.
 - Achieved by updating keys using hash functions or message exchanges.
-
 ```
 K_{i+1} = h(K_i, M_i)
 ```
-
 > "If an attacker now compromises one of their systems and steals the key, then as soon as they exchange a message which he can't observe or guess, security will be recovered."
 
 **Backward Security:**
@@ -1292,7 +1139,6 @@ K_{i+1} = h(K_i, M_i)
 ```
 C_A = Sig_KS(TS, L, A, K_A, V_A)
 ```
-
 Where:
 - TS = certificate start time/date
 - L = validity period length
@@ -1452,31 +1298,6 @@ Attacks that exploit information leaked through physical implementation rather t
 
 # Comprehensive Study Notes: Chapter 6 - Access Control
 
-<think>
-I'll create a comprehensive set of study notes based on Chapter 6 "Access Control" from Anderson's textbook. I need to extract all concepts, theories, principles, examples, and case studies with detailed explanations.
-
-Let me organize the content by identifying key sections:
-
-1. Introduction to Access Control (Slide 1-2)
-2. Operating System Access Controls (Slides 3-16)
-   - Access control matrices
-   - Groups and roles
-   - ACLs vs Capabilities
-   - DAC vs MAC
-   - OS-specific implementations (Unix, macOS, iOS, Android, Windows)
-3. Middleware Access Control (Slide 17-20)
-   - Database access controls
-   - Browsers as middleware
-4. Sandboxing & Virtualization (Slides 19-20)
-5. Hardware Protection (Slides 21-25)
-6. What Goes Wrong: Attacks and Vulnerabilities (Slides 25-32)
-7. Remedies for Security Issues (Slide 32-33)
-8. Environmental Creep & Summary (Slides 33-34)
-
-I'll now create detailed study notes covering all these aspects with comprehensive explanations, definitions of key terms, examples from the text, and a summary section.
-
-Let me start by creating hierarchical headers for organization as requested.
-</think>
 
 
 ### Introduction to Access Control
@@ -1528,7 +1349,6 @@ Sam       rwx   rwx    rw     -
 Alice      x     x     rw     -
 Bob        rx    r      r     r
 ```
-
 *Interpretation:*
 - Sam has full access to all resources except the audit trail (which he can only read)
 - Alice needs to execute programs but not tamper with them; she must use approved interfaces
@@ -1550,7 +1370,6 @@ Two main approaches to managing the access control matrix:
 User      Operating System Program Accounts Data Audit Trail
 Bob       rx          r        r     r
 ```
-
 *Interpretation:* Bob's capabilities show he can read all resources.
 
 #### Groups and Roles
@@ -1590,7 +1409,6 @@ Traditional Unix systems use `rwx` attributes for owner/group/world:
 ```
 -rw-r----- Alice Accounts
 ```
-
 *Interpretation:* 
 - File type = regular file (`-`)
 - Owner (Alice) can read/write (`rw`)
@@ -1857,7 +1675,6 @@ Browsers are critical middleware platforms for access control:
 ```
 Malicious argument → Overlong input buffer → Landing pad (NOP) → Malicious code
 ```
-
 ##### 2. Other Technical Attacks
 
 | Attack Type | Description | Example |
@@ -2018,53 +1835,6 @@ Malicious argument → Overlong input buffer → Landing pad (NOP) → Malicious
 
 # Comprehensive Study Notes: Secure Programming Tutorial 1
 
-<think>
-Okay, let me approach this systematically. The user wants comprehensive study notes based on a textbook chapter about secure programming fundamentals, specifically focusing on protocol design basics. 
-
-First, I need to analyze all the slide content provided. Slide 1 introduces "Secure Programming Tutorial 1" - that's our anchor point. Slides 2-4 cover application layer protocols with HTTP examples and a Python demo, which seems central. Slide 5 discusses protocol design considerations, Slide 6 lists existing protocols for reference, Slide 7 is about VM setup (less relevant to core concepts), and Slide 8 outlines discussion points for communication protocols.
-
-Hmm... the user emphasized "ALL content" so I must include even minor details like the Ubuntu installation links in Slide 7. But since this is a secure programming tutorial, I'll prioritize protocol design over virtualization setup - though I should mention it briefly as context.
-
-For structure planning:
-- Must create hierarchical headers (H2/H3) matching slide progression
-- Need to bold all key terms: "application layer protocol", "HTTP methods" etc.
-- The Python code in Slides 3-4 requires line-by-line explanation since they're core examples
-- Slide 5's design considerations should become a table for clarity
-- Slide 8's discussion points need expansion into proper concepts
-
-*checking slide content again*
-Ah, the HTTP pseudo-code is crucial - I'll explain each method with real-world analogies (e.g., "POST like submitting a form"). The SimpleProtocolDict demo must be dissected: why it uses .get() instead of [] for safety, how error handling works.
-
-For Slide 6's protocol list:
-- WebSockets vs IRC needs comparison
-- Must emphasize security warnings ("Always consider Security at every step!" is bold-worthy)
-- SFTP/SCP should contrast with insecure FTP
-
-*noticing potential exam traps*
-The "How are identities managed?" question in Slide 8 could be a test item - I'll prepare to explain authentication mechanisms later. Also, the malformed message handling (Slide 8) ties directly to secure programming principles.
-
-For study questions:
-- Must cover all slides but prioritize Slides 2-5
-- Include one "apply" question like modifying SimpleProtocolDict for DELETE support
-- Add a security-focused question: "Why is using HTTP without TLS insecure?"
-
-*verifying completeness*
-Wait - Slide 7's VM instructions are just procedural. Since the user said "comprehensive", I'll include them but label as "environment setup (not core concept)". The summary will clarify this isn't about virtualization.
-
-*self-check for depth*
-For "race conditions" in Slide 8: need to define it simply ("simultaneous conflicting operations") then link to protocol design consequences. Example: two users sending messages at same time causing data loss.
-
-*formatting plan*
-- Tables where comparing protocols (Slide 6)
-- Code blocks with comments for Python demo
-- Bolded terms in explanations like "error handling" and "state management"
-- Study questions numbered 1-20, mixing recall ("list HTTP methods") and analysis ("why is HEAD useful?")
-
-*double-checking requirements*
-User said "15-20 study questions" - I'll aim for exactly 18. Must include all examples: the username/password demo in Slide 4 must be referenced in explanations.
-
-...time to structure this into proper markdown with strict adherence to their formatting rules.
-</think>
 
 *Based on Week 2 Chapter Content*
 
@@ -2139,7 +1909,6 @@ print(proto.handle_request("GET", "username"))           # Output: alice
 print(proto.handle_request("GET", "password"))           # Output: None
 print(proto.handle_request("DELETE", "username"))        # Output: Error (unsupported)
 ```
-
 #### **B. Key Implementation Principles**  
 1. **Input Normalization**: `operation.upper()` ensures case-insensitive handling (`"set"` vs `"SET"`).  
 2. **Strict Validation**: Rejects incomplete requests early (e.g., missing key in `GET`).  
@@ -2245,62 +2014,8 @@ Designing a secure communication protocol demands addressing these critical area
 
 ---
 
-# Comprehensive Study Notes: Module 2 – Input Sanitising & Authorisation
+# Comprehensive Study Notes: Module 2 - Input Sanitising and Authorisation
 
-<think>
-Okay, let me approach this systematically. The user is requesting comprehensive study notes based on a textbook chapter about input sanitizing and authorization. They've provided very specific formatting requirements - hierarchical headers, bolded key terms, tables for comparisons, etc.
-
-First, I need to analyze the source material carefully. The chapter covers several critical security concepts: input sanitization, authentication vs authorization, session management flaws, OS command injection, deserialization vulnerabilities, and data leakage prevention. There are also reading recommendations from Ross Anderson's book about protection goals and cryptography fundamentals.
-
-Hmm... the challenge here is that the provided text doesn't contain all the detailed examples or case studies mentioned in "Include ALL examples". I'll need to infer standard textbook examples based on common security knowledge while being clear when information comes from external sources. For instance, for SQL injection, I should include classic examples like `' OR '1'='1` even if not explicitly stated.
-
-I notice the learning outcomes emphasize practical application ("apply mitigation strategies", "find and fix vulnerabilities"), so my notes must bridge theory to practice. The mention of CVE system and vulnerability cycle suggests including those frameworks too.
-
-For structure, I'll organize by:
-- Core concepts (input sanitization vs validation)
-- Attack types with examples
-- Authentication/authorization deep dive
-- Mitigation strategies table
-- Reading recommendations as supplementary
-
-*checks textbook references*
-Ah, the Anderson book chapters are crucial - need to extract key points from 27.4 about prioritizing protection goals and 5 on cryptography without adding external knowledge. For TLS/code signing explanations, I'll stick strictly to standard definitions.
-
-Biggest challenge will be making "deserialization" clear since it's often poorly explained in textbooks. Should include a concrete example like Java deserializing untrusted data leading to remote code execution.
-
-*mental note*
-Must emphasize the difference between authentication (verifying identity) and authorization (checking permissions) - that's a common exam trap. The session management flaws section needs examples of fixation vs hijacking attacks.
-
-For study questions, I'll create 15-20 covering:
-- Concept definitions
-- Attack scenario analysis ("How would you fix this SQLi?")
-- Comparison tables (e.g., "Compare XSS types")
-- Reading comprehension about Anderson's methodology
-
-*double-checking requirements*
-User said "preserve ALL key information" - so even if the source text is sparse on some topics, I'll include standard textbook content under clear headings like "[Standard Example]". But will avoid making up examples not implied by the chapter.
-
-The cryptography part mentions elliptic curves and hash functions briefly. Since it's a review point, I'll summarize key terms but keep focus on security implications rather than deep math - e.g., "SHA-3 is collision-resistant" not its mathematical properties.
-
-*planning tables*
-For mitigation strategies, need two-column table: Vulnerability | Mitigation (with specific techniques like parameterized queries for SQLi). For authentication flaws, another table comparing weak vs strong methods.
-
-*self-check*
-Am I missing anything from the "all examples" requirement? The text mentions "web application area serves as basis", so all examples must be web-focused. No need to discuss network security beyond HTTP/HTTPS context.
-
-Final structure will follow:
-1. Core Concepts (with bolded terms)
-2. Attack Types with Examples
-3. Authentication & Authorization Deep Dive
-4. Mitigation Strategies Table
-5. Reading Recommendations Summary
-6. Study Questions
-
-*verifying depth*
-For "deserialisation", I'll explain how it differs from serialization, why untrusted data is dangerous (e.g., Java's ObjectInputStream), and include a sample exploit string if possible within textbook scope.
-
-Okay, time to write with strict adherence to the user's formatting rules - no markdown in my thoughts but will use proper headers when drafting. Making sure every learning outcome gets addressed explicitly.
-</think>
 
 *Based on Week 2 Textbook Chapter (Ross Anderson Chapters 5, 6, 27.4–27.5)*  
 
@@ -2334,7 +2049,7 @@ Okay, time to write with strict adherence to the user's formatting rules - no ma
      ```sql
      SELECT * FROM users WHERE username = '' OR '1'='1';
      -- Returns ALL users (bypasses authentication).
-     ```
+```
    - **Mitigation**: Use **parameterized queries** (prepared statements), not string concatenation.  
      > *Correct Code*: `stmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?"); stmt.setString(1, userInput);`  
 
@@ -2416,13 +2131,13 @@ Okay, time to write with strict adherence to the user's formatting rules - no ma
 
 #### **C. Chapter 27: Vulnerability Cycle & CVE**  
 - **Vulnerability Lifecycle**: Discovery → Disclosure → Patching → Exploitation (Anderson 27.5.7):  
-  ```mermaid
+```mermaid
   graph LR
     A[Discovery] --> B[Disclosure]
     B --> C[Patch Release]
     C --> D[Exploitation Window]
     D --> E[Remediation]
-  ```
+```
 - **CVE System**: Common Vulnerabilities and Exposures (e.g., `CVE-2021-44228` for Log4j).  
   > *Why it matters*: Standardized IDs enable security tools to track patches across systems.  
 
@@ -2495,4 +2210,3 @@ This combined study guide contains all notes for **Week 2**, automatically gener
 
 ---
 *Generated by [LectureQ](https://github.com/yourusername/lectureq) - Your AI-powered study companion* 🤖
-
