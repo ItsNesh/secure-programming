@@ -5,31 +5,6 @@ Model: qwen3:30b
 Output Mode: Comprehensive
 -->
 
-<think>
-I'll create a comprehensive set of study notes based on Chapter 6 "Access Control" from Anderson's textbook. I need to extract all concepts, theories, principles, examples, and case studies with detailed explanations.
-
-Let me organize the content by identifying key sections:
-
-1. Introduction to Access Control (Slide 1-2)
-2. Operating System Access Controls (Slides 3-16)
-   - Access control matrices
-   - Groups and roles
-   - ACLs vs Capabilities
-   - DAC vs MAC
-   - OS-specific implementations (Unix, macOS, iOS, Android, Windows)
-3. Middleware Access Control (Slide 17-20)
-   - Database access controls
-   - Browsers as middleware
-4. Sandboxing & Virtualization (Slides 19-20)
-5. Hardware Protection (Slides 21-25)
-6. What Goes Wrong: Attacks and Vulnerabilities (Slides 25-32)
-7. Remedies for Security Issues (Slide 32-33)
-8. Environmental Creep & Summary (Slides 33-34)
-
-I'll now create detailed study notes covering all these aspects with comprehensive explanations, definitions of key terms, examples from the text, and a summary section.
-
-Let me start by creating hierarchical headers for organization as requested.
-</think>
 
 # Comprehensive Study Notes: Chapter 6 - Access Control
 
@@ -82,7 +57,6 @@ Sam       rwx   rwx    rw     -
 Alice      x     x     rw     -
 Bob        rx    r      r     r
 ```
-
 *Interpretation:*
 - Sam has full access to all resources except the audit trail (which he can only read)
 - Alice needs to execute programs but not tamper with them; she must use approved interfaces
@@ -104,7 +78,6 @@ Two main approaches to managing the access control matrix:
 User      Operating System Program Accounts Data Audit Trail
 Bob       rx          r        r     r
 ```
-
 *Interpretation:* Bob's capabilities show he can read all resources.
 
 ### Groups and Roles
@@ -144,7 +117,6 @@ Traditional Unix systems use `rwx` attributes for owner/group/world:
 ```
 -rw-r----- Alice Accounts
 ```
-
 *Interpretation:* 
 - File type = regular file (`-`)
 - Owner (Alice) can read/write (`rw`)
@@ -411,7 +383,6 @@ Browsers are critical middleware platforms for access control:
 ```
 Malicious argument → Overlong input buffer → Landing pad (NOP) → Malicious code
 ```
-
 #### 2. Other Technical Attacks
 
 | Attack Type | Description | Example |

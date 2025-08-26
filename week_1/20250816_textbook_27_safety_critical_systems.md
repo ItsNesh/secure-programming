@@ -5,38 +5,6 @@ Model: qwen3:30b
 Output Mode: Comprehensive
 -->
 
-<think>
-Okay, let me approach this systematically. The user is requesting comprehensive study notes based on a textbook chapter about safety-critical systems from Anderson's work. This appears to be for an advanced cybersecurity or engineering course.
-
-First, I need to analyze the provided slides thoroughly. The content covers several key areas: insurance industry challenges related to cyber risks (Slide 1), safety engineering methodologies (Slides 2-3), hazard analysis techniques like fault trees and FMEA (Slides 3-5), threat modeling approaches (Slide 6), risk quantification methods (Slide 7-8), and the critical difference between safety and security engineering paradigms (Slide 9).
-
-Hmm, I notice this chapter makes important connections between traditional safety-critical systems (like aviation) and modern cybersecurity challenges. The Boeing 737Max case study in Slide 9 is particularly relevant as it demonstrates how failure to integrate human factors into system design can lead to catastrophic outcomes.
-
-For the structure of my notes, I'll organize them hierarchically following the textbook's flow but enhancing with:
-- Bolded key terms for quick reference
-- Tables comparing methodologies (like FMEA vs fault trees)
-- Detailed explanations of all examples mentioned (Challenger disaster, SWIFT design etc.)
-- Clear definitions of specialized terminology like "safety case" or "fault masking"
-
-I should pay special attention to the nuanced differences between safety engineering and security engineering - that's clearly a central thesis. The textbook emphasizes how safety deals with random failures while security must account for malicious actors ("programming Satan's computer"). This distinction needs thorough explanation.
-
-The user specifically requested 15-20 study questions, so I'll craft those to test deep understanding beyond simple recall. For instance: "Explain why the Boeing 737Max disaster illustrates failure in both safety engineering and security principles."
-
-I notice some complex concepts like STPA (System Theoretic Process Analysis) that need careful unpacking. And must include all case studies mentioned - Challenger, Three Mile Island, USS McCain collision.
-
-For vocabulary, I'll define terms like "trusted computing base" when first introduced with context from the SWIFT example in Slide 3. The insurance industry discussion on correlated risks (Slide 1) also needs clear explanation as it's relevant to risk management frameworks.
-
-The challenge will be maintaining completeness while avoiding information overload. Since this is for exam preparation, I'll prioritize concepts that appear multiple times or are emphasized by the author ("safety case" appears in Slides 2 and 9).
-
-Most importantly, every single example from all slides must be included with its lesson - like how motor reversing circuit design (Fig 27.2) demonstrates hazard elimination principles applicable to security engineering.
-
-For Slide 6's threat modeling section, I'll create a table comparing Microsoft's approach versus traditional FMEA since the textbook contrasts them explicitly. The ISO 21434 standard example about CAN bus firewalls is too important to omit.
-
-*checking slide count again*
-Ah, and mustn't forget the human factors aspects - like how error rates change under stress (Three Mile Island reference), or why pilots get tunnel vision during emergencies. These psychological elements are crucial for understanding safety-critical system design.
-
-Finally, I'll conclude with a synthesis section showing how all these concepts interconnect in real-world systems, emphasizing that "safety must be built-in" rather than retrofitted - which is the chapter's core message.
-</think>
 
 # Comprehensive Study Notes: Safety-Critical Systems (Chapter 27)
 
@@ -158,12 +126,12 @@ Finally, I'll conclude with a synthesis section showing how all these concepts i
 
 ### **Risk Matrix Management**
 - **Basic principle**: *Each serious hazard must be constrained by ≥2 independent safety mechanisms*.
-  ```mermaid
+```mermaid
   graph LR
     A[Hazard: Engine Failure] --> B[Redundant Engines]
     A --> C[Fuel Tank Diversity]
     A --> D[Training for Crews]
-  ```
+```
 - **Alternative**: System Theoretic Process Analysis (STPA) – starts with hazards → designs controls top-down.
 
 > 🛠️ *Practical Example*:  
