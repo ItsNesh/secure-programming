@@ -2,6 +2,7 @@
 
 - [Secure‑Programming Course Glossary](#glossary-of-concepts-covered-in-the-secureprogramming-course)
 - [Secure Programming Sample Exam Glossary](#glossary-of-concepts-covered-in-the-secure-programming-sample-exam)
+- [Condensed Secure‑Programming Glossary (Only directly useful exam concepts)](#condensed-secureprogramming-glossary)
 
 # Glossary of Concepts Covered in the Secure‑Programming Course
 *(Alphabetical order, grouped by theme.)*
@@ -319,6 +320,8 @@
 **End of Glossary**.
 
 # Glossary of Concepts Covered in the Secure Programming Sample Exam
+*All definitions are derived from the sample exam content and augmented with general security knowledge.*
+
 ### A – MITRE ATT&CK Matrix  
 **Definition:** A globally‑accessible framework that categorises adversary **tactics**, **techniques**, and **procedures** (TTPs) used during cyber‑attacks.  
 **Expanded explanation:** Rather than tracking individual vulnerabilities, ATT&CK maps the *behaviour* of attackers (e.g., “Credential Dumping”, “Lateral Movement”) and provides a common language for threat‑intelligence sharing, detection engineering, and red‑team planning. It helps defenders understand *how* a compromise happens, not just *what* is vulnerable.
@@ -566,6 +569,87 @@ The quantitative view helps organisations prioritize remediation efforts.
 **Definition:** **A set of principles and techniques (input validation, least privilege, defense‑in‑depth, use of safe libraries) that reduce the likelihood of introducing vulnerabilities.**  
 **Expanded explanation:** Following secure coding guidelines, employing static/dynamic analysis, applying compiler hardening flags, and performing thorough code reviews together form a robust software security lifecycle.
 
+
 ---
 
-*All definitions are derived from the sample exam content and augmented with general security knowledge.*
+# Condensed Secure‑Programming Glossary
+*(Only terms that are directly useful for a secure‑programming exam are kept. All definitions are taken from the provided source [1].)*  
+
+| Term | Short Definition |
+|------|------------------|
+| **Access Control Matrix** | Conceptual table mapping **principals** (users/processes) to **resources** and the permitted operations; the basis for ACLs and capabilities. |
+| **Access Control List (ACL)** | Per‑resource list of principals and their allowed rights (e.g., `user:alice rwx`). |
+| **Capability** | Token that *embodies* a set of rights; possession grants the encoded permissions without a central check. |
+| **Authentication** | Verifies *who* a user or machine claims to be (something you know/​have/​are). |
+| **Authorization** | Determines *what* an authenticated principal may do; implemented via ACLs, RBAC, ABAC, etc. |
+| **Bcrypt / Scrypt / Argon2** | Memory‑hard, adaptive password‑hashing functions that use a random **salt** and configurable cost to resist brute‑force attacks. |
+| **Binary Exploit** | Technique that abuses a software bug (e.g., buffer overflow, use‑after‑free) to execute attacker‑controlled code. |
+| **CAPTCHA / reCAPTCHA** | Challenge‑response test to separate humans from automated scripts; part of defense‑in‑depth. |
+| **Code Signing** | Cryptographic signing of executables/packages with a private key so receivers can verify authenticity and integrity. |
+| **Cross‑Site Request Forgery (CSRF)** | Tricks an authenticated browser into sending a state‑changing request; mitigated with anti‑CSRF tokens, SameSite cookies, etc. |
+| **Cross‑Site Scripting (XSS)** | Injection of malicious client‑side scripts; mitigations include output encoding, CSP, and input sanitisation. |
+| **CSRF Token** | Random per‑session value embedded in forms/AJAX; server validates it to ensure the request originated from the legitimate site. |
+| **DLL Hijacking** | Places a malicious DLL in a location that a privileged process loads first, achieving privilege escalation. |
+| **Domain‑Generation Algorithm (DGA)** | Generates many pseudo‑random domain names for C2 traffic, evading static blacklists. |
+| **Encryption‑at‑Rest** | Encrypts stored data (disk, database) to protect confidentiality if the media is stolen. |
+| **Exploit Mitigation** | OS‑level defenses such as DEP/NX, ASLR, Control‑Flow Integrity, stack canaries, SafeSEH. |
+| **FIDO2 / WebAuthn** | Password‑less authentication using public‑key cryptography and a hardware authenticator. |
+| **Forward Secrecy (FS)** | Guarantees that compromise of long‑term keys does not expose past session keys (e.g., DHE/ECDHE). |
+| **Heap‑Based Buffer Overflow** | Writes past a heap allocation, corrupting metadata and potentially leading to crashes or code execution. |
+| **Heap‑spraying** | Fills large memory regions with attacker‑controlled data to increase the chance of landing in a vulnerable buffer. |
+| **Injection (SQL, OS, Command, LDAP, etc.)** | Untrusted input is interpreted as code/commands; mitigated with parameterised APIs and strict validation. |
+| **Iterative/Memory‑Hard KDF (PBKDF2, Argon2, etc.)** | Derives a high‑entropy key from a low‑entropy secret (e.g., password) using salts and many iterations. |
+| **Least Privilege** | Grant subjects only the permissions they need to perform their job, reducing blast radius. |
+| **MITRE ATT&CK Matrix** | Framework that categorises attacker tactics, techniques and procedures; useful for threat modelling. |
+| **Memory‑Safe Languages (Rust, Go, Swift)** | Languages that eliminate common memory‑corruption bugs (buffer overflows, use‑after‑free) via ownership and bounds‑checking. |
+| **Multifactor Authentication (MFA)** | Requires two or more distinct factors (knowledge, possession, inherence) to verify identity. |
+| **Password Salt** | Random data concatenated with a password before hashing to ensure each hash is unique. |
+| **Password‑Hashing Functions (bcrypt, scrypt, Argon2)** | Slow, memory‑hard hashes that make brute‑force attacks expensive. |
+| **Race Condition** | Program behaviour depends on the timing of concurrent operations; can lead to TOCTOU bugs. |
+| **Read‑Only Memory (ROM) / Secure Boot** | Immutable firmware that verifies the integrity of the boot chain before execution. |
+| **Root of Trust (RoT)** | Hardware/firmware component trusted for core security functions (e.g., TPM, secure bootloader). |
+| **SQL Injection** | Malicious SQL placed in user‑controlled input, allowing data theft or manipulation; prevented with prepared statements. |
+| **Stack Canaries** | Random sentinel placed before the return address; overwritten canaries abort the program, stopping classic stack‑smash attacks. |
+| **Static Application Security Testing (SAST)** | Analyzes source code or binaries without execution; common methods include data‑flow analysis and symbolic execution. |
+| **Time‑Of‑Check‑To‑Time‑Of‑Use (TOCTOU)** | Race between resource verification and use; an attacker can swap the resource after the check. |
+| **Trusted Execution Environment (TEE)** | Isolated hardware area (e.g., Intel SGX, ARM TrustZone) that protects code and data even if the OS is compromised. |
+| **Undefined Behaviour** | Code that the language does not define; can lead to security‑critical bugs (e.g., buffer overruns). |
+| **Use‑After‑Free** | Accessing memory after it has been freed; enables arbitrary write or code execution. |
+| **Virtual Tables (vtables)** | C++ structures holding pointers to virtual functions; overwriting a vtable pointer can redirect execution. |
+| **Vulnerability Disclosure** | Process of responsibly reporting security flaws to vendors or the public. |
+| **XSS (Cross‑Site Scripting)** | See **Cross‑Site Scripting** above. |
+| **Zero‑Day Vulnerability** | A flaw that is unknown to the vendor and has no patch at the time of exploitation. |
+
+**Exam‑Focused Concepts (briefly)**  
+
+| Term | Core Idea |
+|------|-----------|
+| **Risk (Cyber‑Security Context)** | *Vulnerability × Threat × Impact*; used to prioritize remediation. |
+| **Developer Mistakes that Affect Security** | Bugs, insecure APIs, missing validation, hard‑coded secrets. |
+| **Key Phases of Secure SDLC** | Requirements, design, coding, testing, review, incident planning. |
+| **Dirty COW Exploitation** | Exploits a copy‑on‑write race by mapping a read‑only page with `MAP_PRIVATE`. |
+| **Heap‑Management Vulnerabilities** | Mainly **use‑after‑free**. |
+| **Address Space Layout Randomization (ASLR)** | Randomises locations of stack/heap/library code to hinder ROP. |
+| **Return‑to‑libc** | Overwrites return address with a library function (e.g., `system`). |
+| **Blind SQL Injection** | Infer data via side‑effects (timing, boolean responses) when results aren’t returned. |
+| **CSRF (Cross‑Site Request Forgery)** | Forces an authenticated user to perform unwanted actions; mitigated with tokens/SameSite. |
+| **Heap‑Based Buffer Overflow Consequence** | Typically a crash/segmentation fault; can be escalated to code execution. |
+| **Side‑Channel Attacks** | Derive secrets from timing, power, EM, cache behaviour; mitigated with constant‑time code. |
+| **Manual Code Review Component** | **Pair programming** – two developers review code together in real time. |
+| **Symbolic Execution** | Treats inputs as symbolic values, explores paths with an SMT solver to find bugs. |
+| **Red Zones in Heap Management** | Guard pages before/after allocations that trigger faults on overflow. |
+| **ROP (Return‑Oriented Programming)** | Chains existing “gadgets” ending in `ret` to build malicious payloads. |
+| **ASLR Bypass** | Brute‑force address guesses, often aided by information leaks. |
+| **Non‑Executable (NX) / DEP** | Marks memory pages as non‑executable, stopping classic shellcode injection. |
+| **Virtual Tables (vtables) in C++** | Overwrites can redirect control flow via corrupted virtual function pointers. |
+| **Rainbow Table** | Pre‑computed hash‑plaintext lookup; thwarted by salting and strong hash functions. |
+| **Injection Flaws (General)** | Any unsanitised data sent to an interpreter (SQL, OS, LDAP, XSS). |
+| **Virus vs. Worm** | Virus attaches to files; worm spreads autonomously over networks. |
+| **EBP & EIP (x86)** | Frame pointer and instruction pointer; manipulating them enables stack‑based exploits. |
+| **Polymorphic vs. Metamorphic Malware** | Polymorphic encrypts payload; metamorphic rewrites code to evade signatures. |
+| **Fencepost (Off‑by‑One) Error** | Using `i <= n` instead of `i < n` leading to out‑of‑bounds access. |
+| **Command Injection** | User input incorporated into a shell command without sanitisation (e.g., `system(cmd)`). |
+| **Pair Programming** | Real‑time collaborative coding/review that catches logical flaws early. |
+| **Secure Coding Practices** | Input validation, least privilege, defense‑in‑depth, safe libraries, hardening flags. |
+
+These trimmed entries capture the terminology and concepts most likely to appear on a secure‑programming examination while omitting peripheral or purely administrative topics. All information is sourced from the provided glossary.
